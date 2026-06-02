@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="File di origine">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="File di intestazione">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="File di risorse">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="File di origine\app">
+      <UniqueIdentifier>{d2fee3e8-8bd8-46d1-b31b-b4854da42a89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\include">
+      <UniqueIdentifier>{ebddb2de-3760-4992-9d2d-4fdf2808f332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\src">
+      <UniqueIdentifier>{8b05baf5-4ae5-4e3c-9e2d-2dea0e199f51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\src\core">
+      <UniqueIdentifier>{ac0cff28-7014-49b3-9c7a-4b68e1051548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\src\generalAllocator">
+      <UniqueIdentifier>{dee8468e-e58a-46e4-ac08-8895afb2b3d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\src\hub">
+      <UniqueIdentifier>{8928c2aa-8598-4c30-9ef4-441a07ff7b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\src\smallAllocator">
+      <UniqueIdentifier>{28182a44-968b-4498-b57b-34e2f637a411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine\test">
+      <UniqueIdentifier>{7f60c28e-2610-4060-b739-d767f50a22e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="app\main.cpp">
+      <Filter>File di origine\app</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\AllocatorStats.cpp">
+      <Filter>File di origine\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\LeakTracker.cpp">
+      <Filter>File di origine\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generalAllocator\GeneralPurposeAllocator.cpp">
+      <Filter>File di origine\src\generalAllocator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hub\MemoryManager.cpp">
+      <Filter>File di origine\src\hub</Filter>
+    </ClCompile>
+    <ClCompile Include="src\smallAllocator\Chunk.cpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\smallAllocator\FixedAllocator.cpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\smallAllocator\SmallObjectAllocator.cpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\AllocationHeader.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AllocatorStats.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IAllocator.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LeakTracker.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MM_Allocator.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MM_Config.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MM_Core.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MM_GlobalOverride.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MM_Utils.hpp">
+      <Filter>File di origine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="test\testChunk.hpp">
+      <Filter>File di origine\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\testFixedAllocator.hpp">
+      <Filter>File di origine\test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_main.hpp">
+      <Filter>File di origine\test</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
