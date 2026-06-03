@@ -26,6 +26,7 @@
     <ClCompile Include="src\hub\MemoryManager.cpp" />
     <ClCompile Include="src\smallAllocator\Chunk.cpp" />
     <ClCompile Include="src\smallAllocator\FixedAllocator.cpp" />
+    <ClCompile Include="src\smallAllocator\SmallObject.cpp" />
     <ClCompile Include="src\smallAllocator\SmallObjectAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +39,12 @@
     <ClInclude Include="include\MM_Core.hpp" />
     <ClInclude Include="include\MM_GlobalOverride.hpp" />
     <ClInclude Include="include\MM_Utils.hpp" />
+    <ClInclude Include="src\generalAllocator\GeneralPurposeAllocator.hpp" />
+    <ClInclude Include="src\hub\MemoryManager.hpp" />
+    <ClInclude Include="src\smallAllocator\Chunk.hpp" />
+    <ClInclude Include="src\smallAllocator\FixedAllocator.hpp" />
+    <ClInclude Include="src\smallAllocator\SmallObject.hpp" />
+    <ClInclude Include="src\smallAllocator\SmallObjectAllocator.hpp" />
     <ClInclude Include="test\testChunk.hpp" />
     <ClInclude Include="test\testFixedAllocator.hpp" />
     <ClInclude Include="test\test_main.hpp" />

@@ -63,6 +63,9 @@
     <ClCompile Include="src\smallAllocator\SmallObjectAllocator.cpp">
       <Filter>File di origine\src\smallAllocator</Filter>
     </ClCompile>
+    <ClCompile Include="src\smallAllocator\SmallObject.cpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\AllocationHeader.hpp">
@@ -100,6 +103,24 @@
     </ClInclude>
     <ClInclude Include="test\test_main.hpp">
       <Filter>File di origine\test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\smallAllocator\Chunk.hpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\smallAllocator\FixedAllocator.hpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\smallAllocator\SmallObject.hpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\smallAllocator\SmallObjectAllocator.hpp">
+      <Filter>File di origine\src\smallAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hub\MemoryManager.hpp">
+      <Filter>File di origine\src\hub</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generalAllocator\GeneralPurposeAllocator.hpp">
+      <Filter>File di origine\src\generalAllocator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

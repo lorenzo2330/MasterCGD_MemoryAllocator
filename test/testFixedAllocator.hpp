@@ -1,9 +1,7 @@
 #pragma once
-#include "../SmallAllocator/FixedAllocator.h"
+#include "../src/smallAllocator/FixedAllocator.hpp"
 #include <cassert>
 #include <iostream>
-
-/*
 
 void test_fixedAllocator_init(FixedAllocator& fa, size_t size, unsigned char blocks) {
 
@@ -141,4 +139,3 @@ void test_fixedAllocator_allocate_create(FixedAllocator& fa, size_t size, unsign
 
 	delete[] v;
 }
-*/

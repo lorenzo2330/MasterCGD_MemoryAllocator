@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SmallObjectAllocator.h"
+#include "SmallObjectAllocator.hpp"
 
 class SmallObject {
 public:

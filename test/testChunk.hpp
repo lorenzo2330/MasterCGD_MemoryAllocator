@@ -1,8 +1,8 @@
 #pragma once
-#include "../SmallAllocator/Chunk.h"
+#include "../src/smallAllocator/Chunk.hpp"
 #include <cassert>
+#include <iostream>
 
-/*
 void test_chunk_init(Chunk &c, size_t size, unsigned char blocks) {
 
 	c.Init(size, blocks);
@@ -13,14 +13,20 @@ void test_chunk_init(Chunk &c, size_t size, unsigned char blocks) {
 
     //Test se il primo byte di ogni blocco contiene l'indice del successivo
     unsigned char* p = c.pData_;
-	for (int i = 0; i < blocks; i++) { assert(*p == (i + 1) % blocks); p += size; }
+	for (int i = 0; i < blocks; i++) { assert(*p == i + 1); p += size; }
+	
+	//Test per verificare che ogni blocco abbia la size corretta (quindi che si siano allocati size * blocks byte)
+	assert((p - c.pData_) / blocks == size);
 }
 
 void* test_chunk_allocate(Chunk &c, size_t size, unsigned char blocks) {
     
     void* p1 = c.Allocate(size);
+	c.Print(size, blocks);
     void* p2 = c.Allocate(size);
+	c.Print(size, blocks);
     void* p3 = c.Allocate(size);
+	c.Print(size, blocks);
 
     //Test per controllare che si saturi il chunk
     assert(c.blocksAvailable_ == 0);
@@ -32,7 +38,11 @@ void* test_chunk_allocate(Chunk &c, size_t size, unsigned char blocks) {
 
 void test_chunk_deallocate_reuse(Chunk &c, size_t size, unsigned char blocks, void* p1) {
 
+	//std::cout << "p1 = " << static_cast<std::size_t>(*p1) << std::endl;
+
     c.Deallocate(p1, size);
+
+	c.Print(size, blocks);
 
     void* p4 = c.Allocate(size);
 
@@ -107,7 +117,7 @@ void test_chunk_old() {
 	size_t size = 4;
 	unsigned char blocks = 8;
 
-	Chunk c;
+	Chunk c{};
 
 	c.Init(size, blocks);
 
@@ -116,5 +126,3 @@ void test_chunk_old() {
 
 	test_allocazioni_deallocazioni_multiple(c, size, blocks);
 }
-
-*/
