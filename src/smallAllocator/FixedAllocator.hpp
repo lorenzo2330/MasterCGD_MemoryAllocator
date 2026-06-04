@@ -39,6 +39,7 @@ public:
 	
 	friend void test_fixedAllocator_init(FixedAllocator&, size_t, unsigned char);
 	friend void test_fixedAllocator_allocate_and_deallocate(FixedAllocator&, size_t, unsigned char);
+	friend void test_fixedAllocator_release(FixedAllocator& fa, size_t size, unsigned char blocks);
 	friend void test_fixedAllocator_allocate_create(FixedAllocator&, size_t, unsigned char);
 	//friend void test_fixedAllocator_stress(FixedAllocator&, unsigned char);
 	//friend void test_fixedAllocator_deallocate_reverse(FixedAllocator&, unsigned char);

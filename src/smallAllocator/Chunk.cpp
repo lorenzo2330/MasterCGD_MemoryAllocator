@@ -26,11 +26,9 @@ bool Chunk::Init(std::size_t blockSize, unsigned char blocks) {
 	
 	DEB("Chunk::Init()");
 
-	if (blockSize < 0) { return ERR("Chunk::Init(): blockSize negative");}
+	if (blockSize == 0) { return ERR("Chunk::Init(): blockSize cannot be 0");}
 
-	if (blocks < 0) { return ERR("Chunk::Init(): n blocks negative"); }
-
-	if ((blockSize * blocks) / blockSize != blocks) { return ERR("Chunk::Init(): overflow"); } //TODO cos'è?
+	if (blocks == 0) { return ERR("Chunk::Init(): n blocks cannot be 0"); }
 
 	pData_ = new unsigned char[blockSize * blocks];				//Allocazione di dimBlocchi * numBlocchi -> area di memoria del chunk
 
@@ -41,11 +39,9 @@ bool Chunk::Reset(std::size_t blockSize, unsigned char blocks) {
 	
 	DEB("Chunk::Reset()");
 
-	if (blockSize < 0) { return ERR("Chunk::Reset(): blockSize negative"); }
+	if (blockSize == 0) { return ERR("Chunk::Init(): blockSize cannot be 0"); }
 
-	if (blocks < 0) { return ERR("Chunk::Reset(): n blocks negative"); }
-
-	if ((blockSize * blocks) / blockSize != blocks) { return ERR("Chunk::Reset(): overflow"); } //TODO cos'è?
+	if (blocks == 0) { return ERR("Chunk::Init(): n blocks cannot be 0"); }
 
 	firstAvailableBlock_ = 0;									//Inizialmente il primo blocco disponibile è il primo blocco del chunk
 	blocksAvailable_ = blocks;									//Inizialmente tutti i blocchi sono disponibili
@@ -76,6 +72,9 @@ void* Chunk::Allocate(std::size_t blockSize) {
 
 void Chunk::Deallocate(void* p, std::size_t blockSize) {
 
+	//Nota: nessun controllo che il chunk non sia vuoto, Alexandrescu lo assume (maggiore velocità)
+	//Nota: nessun controllo sul fatto che *p punti ad un blocco del chunk "occupato", Alexandrescu lo assume (maggiore velocità)
+
 	DEB("Chunk::Deallocate()");
 
 	if (p == nullptr || p < pData_) { ERR("Chunk::Deallocate(): Invalid parameters"); return; };
@@ -94,6 +93,9 @@ void Chunk::Deallocate(void* p, std::size_t blockSize) {
 bool Chunk::Release() { 
 	DEB("Chunk::Release()");
 	if (pData_ == nullptr) { return ERR("Chunk::Release(): pData_ null"); };
-	delete[] pData_; 
+	delete[] pData_;
+	pData_ = nullptr;
+	blocksAvailable_ = 0; 
+	firstAvailableBlock_ = 0;
 	return true;
 }

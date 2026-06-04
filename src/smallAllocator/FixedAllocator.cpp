@@ -14,8 +14,8 @@ bool FixedAllocator::Init(std::size_t blockSize, unsigned char numBlocks) {
 	blockSize_ = blockSize;
 	numBlocks_ = numBlocks;
 	
-	//chunks_.clear();
-	//chunks_.reserve(32); //Cuscinetto per aumentare le prestazioni (meno syscall)
+	chunks_.clear();
+	chunks_.reserve(32); //Cuscinetto per aumentare le prestazioni (meno syscall)
 
 	return true;
 }
@@ -24,7 +24,8 @@ bool FixedAllocator::MakeNewChunk() {
 
 	DEB("FixedAllocator::MakeNewChunk()");
 
-	chunks_.reserve(chunks_.size() * 2);	//Euristica, TODO: valutare se è meglio cambiare (es +5, *5/3, ...)
+	//Euristica, TODO: valutare se è meglio cambiare (es +5, *5/3, ...)
+	if (chunks_.capacity() == chunks_.size()){ chunks_.reserve(chunks_.size() * 2); }
 	
 	//Crea un nuovo chunk
 	Chunk newChunk{};
@@ -35,7 +36,7 @@ bool FixedAllocator::MakeNewChunk() {
 	
 	//Aggiorna i puntatori
 	allocChunk_ = &chunks_.back();
-	deallocChunk_ = &chunks_.back();
+	deallocChunk_ = &chunks_.front();
 
 	return true;
 }

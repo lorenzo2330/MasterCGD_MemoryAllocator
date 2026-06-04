@@ -9,48 +9,39 @@
 
 
 void test_chunk(bool print) {
-	size_t size = 4;
-	unsigned char blocks = 3;
+	size_t size = 1;			//Ogni blocco avrà 1 byte
+	//size_t size = 2;			//Ogni blocco avrà 2 byte
+	unsigned char blocks = 4;	//Ogni chunk avrà 4 blocchi
 	Chunk c;
 
-
-	ENDL(2);
-	TEST("Chunk::Init()-Inizio");
-	test_chunk_init(c, size, blocks);
-	TEST("Chunk::Init()-Fine");
-	ENDL(2);
-	
-	if(print) c.Print(size, blocks);
-
-	ENDL(2);
-	TEST("Chunk::Allocate()-Inizio");
-	void* p1 = test_chunk_allocate(c, size, blocks);
-	TEST("Chunk::Allocate()-Fine");
-	ENDL(2);
-
-	if (print) c.Print(size, blocks);
-	
-	ENDL(2);
-	TEST("Chunk::DeallocateReuse()-Inizio");
-	test_chunk_deallocate_reuse(c, size, blocks, p1);
-	TEST("Chunk::DeallocateReuse()-Fine");
-	ENDL(2);
-
-	if (print) c.Print(size, blocks);
+	TEST("Test Chunk - Inizio");
+	tC_init(c, size, blocks);
+	tC_deallocate(c, size, blocks, tC_allocate(c, size));
+	tC_allocate_deallocate_max_fifo(c, size, blocks);
+	tC_reset(c, size, blocks, false);
+	tC_allocate_deallocate_max_lifo(c, size, blocks);
+	tC_reset(c, size, blocks, false);
+	tC_allocate_deallocate_max_odd(c, size, blocks);
+	tC_reset(c, size, blocks, false);
+	TEST("Test Chunk - Fine");
 }
 
 void test_fixedAllocator(bool print) {
 	size_t size = 4;
 	unsigned char blocks = 3;
 	FixedAllocator fa;
-
-	TEST("FixedAllocator::Init()-Inizio");
+	
 	test_fixedAllocator_init(fa, size, blocks);
 	TEST("FixedAllocator::Init()-Fine");
 
 	TEST("FixedAllocator::Allocate&Deallocate()-Inizio");
 	test_fixedAllocator_allocate_and_deallocate(fa, size, blocks);
 	TEST("FixedAllocator::Allocate&Deallocate()-Fine");
+
+	TEST("FixedAllocator::Release()-Inizio");
+	test_fixedAllocator_release(fa, size, blocks);
+	TEST("FixedAllocator::Release()-Fine");
+
 
 	TEST("FixedAllocator::AllocateCreate()-Inizio");
 	test_fixedAllocator_allocate_create(fa, size, blocks);

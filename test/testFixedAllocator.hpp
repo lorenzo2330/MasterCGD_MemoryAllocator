@@ -3,6 +3,13 @@
 #include <cassert>
 #include <iostream>
 
+/*Test fixedAllocator: -> TODO da fare
+-init: Verifico che chunks_.size() saia 32 (valore di default creto in init) e che i valori siano quelli dichiarati
+-allocate: allocando un elemento, verifico che size aumenti e che venga effettivamente allocato in un nuovo chunk (testo anche makeNewChunk)
+-deallocate: dealloco un elemento, verifico che quel chunk segni correttamente blocks available e il chunk non venga rimosso (max 2 contemporaneamente)
+-removeChunk: alloco blocks * 2 + 1 (creerà 3 chunk), poi li dealloco tutti e controllo che rimangano solo 2 chunk
+*/
+
 void test_fixedAllocator_init(FixedAllocator& fa, size_t size, unsigned char blocks) {
 
 	fa.Init(size, blocks);
@@ -14,7 +21,6 @@ void test_fixedAllocator_init(FixedAllocator& fa, size_t size, unsigned char blo
 	//Test per verificare che allocChunk e deallocChunk siano nulli (=0)
 	assert(fa.allocChunk_ == nullptr);
 	assert(fa.deallocChunk_ == nullptr);
-
 
 	//Test per verificare che il vettore di chunk sia vuoto
 	assert(fa.chunks_.size() == 0);
@@ -44,8 +50,20 @@ void test_fixedAllocator_allocate_and_deallocate(FixedAllocator& fa, size_t size
 	assert(fa.chunks_.size() == 1);
 
 	delete[] v;
-
 }
+
+void test_fixedAllocator_release(FixedAllocator& fa, size_t size, unsigned char blocks) {
+
+	//Test per verificare se il fixedAllocator contiene dei Chunk
+	assert(fa.chunks_.size() > 0);
+
+	//Rilascia ogni chunk
+	fa.~FixedAllocator();
+
+	//Test per verificare se il fixedAllocator è stato svuotato
+	assert(fa.chunks_.size() == 0);
+}
+
 
 void test_fixedAllocator_allocate_create(FixedAllocator& fa, size_t size, unsigned char blocks) {
 	
@@ -58,14 +76,20 @@ void test_fixedAllocator_allocate_create(FixedAllocator& fa, size_t size, unsign
 
 	void** v = new void* [blocks * 3];
 
+	TEST("Pre-ciclo1");
+
 	//Allocazione
 	for (int i = 0; i < blocks; i++) { v[i] = fa.Allocate(); }
 
 	//Controllo che, al termine del for, ci sia ancora un unico chunk
 	assert(fa.chunks_.size() == 1);
 
+	TEST("Pre-ciclo2");
+
 	//Allocazione
 	for (int i = blocks; i < blocks * 3; i++) { v[i] = fa.Allocate(); }
+
+	TEST("Post-ciclo2");
 
 	//Controllo che, al termine del for, ci siano 3 chunk
 	assert(fa.chunks_.size() == 3);

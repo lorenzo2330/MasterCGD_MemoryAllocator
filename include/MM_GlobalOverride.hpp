@@ -11,6 +11,8 @@
 * -delete[] (sized e non-sized)
 */
 
+//TODO: in teoria questo file non serve, perchè non so se useremo mai quello globale, quindi forse posso toglierlo
+
 #ifdef USE_MM_GLOBAL
 
 #include "MM_Core.hpp"

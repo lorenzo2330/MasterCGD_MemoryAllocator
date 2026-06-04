@@ -34,7 +34,6 @@
     <ClInclude Include="include\AllocatorStats.hpp" />
     <ClInclude Include="include\IAllocator.hpp" />
     <ClInclude Include="include\LeakTracker.hpp" />
-    <ClInclude Include="include\MM_Allocator.hpp" />
     <ClInclude Include="include\MM_Config.hpp" />
     <ClInclude Include="include\MM_Core.hpp" />
     <ClInclude Include="include\MM_GlobalOverride.hpp" />
@@ -48,6 +47,9 @@
     <ClInclude Include="test\testChunk.hpp" />
     <ClInclude Include="test\testFixedAllocator.hpp" />
     <ClInclude Include="test\test_main.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

@@ -13,7 +13,7 @@ namespace MM {
     //SmallObjectAllocator parameters
     static constexpr std::size_t SMALL_OBJECT_MAX_SIZE = 128;   //Dim massima di un FixedAllocator (quindi di un Chunk) (=SMALL_THRESHOLD)   //TODO sostituire con SMALL_THRESHOLD
     static constexpr std::size_t SMALL_OBJECT_ALIGN = 8;        //Allineamento dei Chunk (se si richiede 13 -> si danno 16 (prossimo multiplo di 8)
-    static constexpr std::size_t CHUNK_SIZE = 4096;             //Numero massimo di elementi per ogni chunk
+    static constexpr std::size_t CHUNK_SIZE = 255;              //Numero massimo di elementi per ogni chunk
 
     //GeneralPurposeAllocator parameters
     static constexpr std::size_t GPA_INITIAL_POOL_SIZE = 1024 * 1024 * 256; //256 MB di pool iniziale
